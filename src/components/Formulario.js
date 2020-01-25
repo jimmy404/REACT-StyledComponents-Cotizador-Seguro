@@ -47,6 +47,8 @@ const Formulario = () => {
         plan: ''
     });
 
+    const [error, guardarError ] = useState(false);
+
     const {marca, year, plan} = datos;
 
     const obtenerInformacion = e => {
@@ -58,6 +60,11 @@ const Formulario = () => {
 
     const cotizarSeguro = e => {
         e.preventDefault();
+        if(marca.trim() === '' || year.trim() === '' || plan.trim() === ''){
+            guardarError(true);
+            return;
+        }
+        guardarError(false);
     }
 
     return (
@@ -108,7 +115,7 @@ const Formulario = () => {
                     onChange={obtenerInformacion}
                 /> Completo
             </Campo>
-            <Boton type="button">Cotizar</Boton>
+            <Boton type="submit">Cotizar</Boton>
         </form>
     );
 }
