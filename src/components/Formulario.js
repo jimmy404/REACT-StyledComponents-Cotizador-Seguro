@@ -56,9 +56,14 @@ const Formulario = () => {
         })
     }
 
+    const cotizarSeguro = e => {
+        e.preventDefault();
+    }
 
     return (
-        <form>
+        <form
+            onSubmit={cotizarSeguro}
+        >
             <Campo>
                 <Label>Marca</Label>
                     <Select name="marca" value={marca} onChange={obtenerInformacion}>
